@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Start Bootstrap - Landing Page](https://startbootstrap.com/template-overviews/landing-page/)
 
 [Landing Page](http://startbootstrap.com/template-overviews/landing-page/) is a multipurpose landing page template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
@@ -66,3 +67,7 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 ## Copyright and License
 
 Copyright 2013-2019 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-landing-page/blob/gh-pages/LICENSE) license.
+=======
+# cville-swig
+cs 4640 Web PL project - Happy hour specials in the Charlottesville area
+>>>>>>> 14091fed4691c262edfc16037ee1e2ff54371907
