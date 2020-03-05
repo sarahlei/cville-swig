@@ -35,32 +35,27 @@
           </div>
           <div class="card-body">
             <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin">
+            <form class="form-signin" id="signin-form" onsubmit=" return getInfo()">
               <div class="form-label-group">
-                <input type="text" id="inputFirstName" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUserame">First Name</label>
+                <input type="text" id="inputFirstName" class="form-control" name="fname" placeholder="First Name" required autofocus>
               </div>
 
               <div class="form-label-group">
-                <input type="text" id="inputLastName" class="form-control" placeholder="Username" required autofocus>
-                <label for="inputUserame">Last Name</label>
+                <input type="text" value="" id="inputLastName" class="form-control" placeholder="Last Name" required>
               </div>
 
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                <label for="inputEmail">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required>
               </div>
 
               <hr>
 
               <div class="form-label-group">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-                <label for="inputConfirmPassword">Confirm password</label>
+                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" required>
               </div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
@@ -75,3 +70,54 @@
     </div>
   </div>
 </body>
+
+<script>
+
+  function getInfo(){
+    var firstName = document.getElementById("inputFirstName").value;
+    var lastName = document.getElementById("inputLastName").value;
+    var email = document.getElementById("inputEmail").value;
+    var password = document.getElementById("inputPassword").value;
+    var confirm_password = document.getElementById("inputConfirmPassword").value;
+
+    console.log(firstName);
+    console.log(lastName);
+    console.log(email);
+    console.log(password);
+    console.log(confirm_password);
+
+    var match = checkPassword(password, confirm_password);
+    console.log(checkPassword(password, confirm_password));
+    if(match == true){
+      let user = new User(firstName, lastName, email, password);
+      console.log(user);
+    }
+    return false;
+
+  }
+
+  const checkPassword = function(password1, password2) {
+                // If Not same return False.
+                if (password1 != password2) {
+                    alert ("\nPassword did not match: Please try again...")
+                    return false;
+                }
+
+                // If same return True.
+                else{
+                    return true;
+                }
+  }
+  class User {
+
+    constructor(firstName, lastName, email, password) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+      this.password = password;
+  }
+
+}
+
+
+  </script>

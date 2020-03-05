@@ -69,30 +69,30 @@ body {
   margin-bottom: 0;
   /* Override default `<label>` margin */
   line-height: 1.5;
-  color: #495057;
+  color: grey;
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
 }
 
 .form-label-group input::-webkit-input-placeholder {
-  color: transparent;
+    color: grey;;
 }
 
 .form-label-group input:-ms-input-placeholder {
-  color: transparent;
+    color: grey;;
 }
 
 .form-label-group input::-ms-input-placeholder {
-  color: transparent;
+    color: grey;;
 }
 
 .form-label-group input::-moz-placeholder {
-  color: transparent;
+    color: grey;;
 }
 
 .form-label-group input::placeholder {
-  color: transparent;
+  color: grey;
 }
 
 .form-label-group input:not(:placeholder-shown) {
@@ -104,7 +104,7 @@ body {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
-  color: #777;
+  color: grey;
 }
 
 .btn-google {
