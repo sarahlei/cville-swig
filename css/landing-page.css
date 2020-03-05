@@ -18,29 +18,6 @@ h6 {
   font-weight: 700;
 }
 
-header.masthead {
-  position: relative;
-  background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
-  background-size: cover;
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-
-header.masthead .overlay {
-  position: absolute;
-  background-color: #212529;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.3;
-}
-
-header.masthead h1 {
-  font-size: 2rem;
-}
-
 .jumbotron {
     background-image: url("https://plymouthmag.com/sites/default/files/styles/629w-scale/public/field/image/iStock-699144432.jpg?itok=BuzEZvbr");
   background-size: cover;
@@ -49,84 +26,36 @@ header.masthead h1 {
   color:white;
 }
 
-
-@media (min-width: 768px) {
-  header.masthead {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
-  header.masthead h1 {
-    font-size: 3rem;
-  }
+.card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  margin-top:10px;
+  margin-bottom:10px;
+  background-color:#FFF;
 }
 
-.showcase .showcase-text {
-  padding: 3rem;
+.card:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.card > .card-inner {
+  padding:10px;
+}
+.card .header h2, h3 {
+  margin-bottom: 0px;
+  margin-top:0px;
+}
+.card .header {
+  margin-bottom:5px;
+}
+.card img{
+    width:100%;
+    height: 40vh;
+object-fit: cover;
 }
 
-.showcase .showcase-img {
-  min-height: 30rem;
-  background-size: cover;
-}
-
-@media (min-width: 768px) {
-  .showcase .showcase-text {
-    padding: 7rem;
-  }
-}
-
-.features-icons {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-}
-
-.features-icons .features-icons-item {
-  max-width: 20rem;
-}
-
-.features-icons .features-icons-item .features-icons-icon {
-  height: 7rem;
-}
-
-.features-icons .features-icons-item .features-icons-icon i {
-  font-size: 4.5rem;
-}
-
-.features-icons .features-icons-item:hover .features-icons-icon i {
-  font-size: 5rem;
-}
-
-.testimonials {
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-}
-
-.testimonials .testimonial-item {
-  max-width: 18rem;
-}
-
-.testimonials .testimonial-item img {
-  max-width: 12rem;
-  box-shadow: 0px 5px 5px 0px #adb5bd;
-}
-
-.call-to-action {
-  position: relative;
-  background-color: #343a40;
-  background: url("../img/bg-masthead.jpg") no-repeat center center;
-  background-size: cover;
-  padding-top: 7rem;
-  padding-bottom: 7rem;
-}
-
-.call-to-action .overlay {
-  position: absolute;
-  background-color: #212529;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.3;
+#banner{
+    display: inline;
 }
 
 footer.footer {
