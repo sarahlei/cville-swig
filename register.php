@@ -1,38 +1,39 @@
+<?php include('server.php') ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CvilleSwig</title>
+  <link rel="stylesheet" type="text/css" href="css/register.css">
+</head>
+<body>
+  <div class="header">
+  	<h2>Register</h2>
+  </div>
 
-<?php session_start();
-
-  $error=''; // Variable To Store Error Message
-  if (isset($_POST['submit'])) {
-    if (empty($_POST['userEmail']) || empty($_POST['password'])) {
-      $error = "User Email or Password is invalid";
-      }
-    else
-  {
-  // Define $userEmail and $password
-  $userEmail=$_POST['userEmail'];
-  $password=$_POST['password'];
-
-  // Establishing Connection with Server by passing server_name, user_id, and password as a parameter
-  $connection = mysqli_connect("localhost", "root", "helloworld");
-
-  // To protect MySQL injection for Security purpose
-  $userEmail = stripslashes($userEmail);
-  $password = stripslashes($password);
-  $userEmail = mysql_real_escape_string($username);
-  $password = mysql_real_escape_string($password);
-
-  // Selecting Database
-  $db = mysql_select_db("cville-swig", $connection);
-  // SQL query to fetch information of registerd users and finds user match.
-  $query = mysql_query("select * from login where password='$password' AND userEmail='$userEmail'", $connection);
-  $rows = mysql_num_rows($query);
-  if ($rows == 1) {
-  $_SESSION['login_user']=$userEmail; // Initializing Session
-    header("location: profile.php"); // Redirecting To Other Page
-  } else {
-    $error = "User Email or Password is invalid";
-  }
-  mysql_close($connection); // Closing Connection
-  }
-  }
-  ?>
+  <form method="post" action="register.php">
+  	<?php include('errors.php'); ?>
+  	<div class="input-group">
+  	  <label>Username</label>
+  	  <input type="text" name="username" value="<?php echo $username; ?>">
+  	</div>
+  	<div class="input-group">
+  	  <label>Email</label>
+  	  <input type="email" name="email" value="<?php echo $email; ?>">
+  	</div>
+  	<div class="input-group">
+  	  <label>Password</label>
+  	  <input type="password" name="password_1">
+  	</div>
+  	<div class="input-group">
+  	  <label>Confirm password</label>
+  	  <input type="password" name="password_2">
+  	</div>
+  	<div class="input-group">
+  	  <button type="submit" class="btn" name="reg_user">Register</button>
+  	</div>
+  	<p>
+  		Already a member? <a href="login.php">Sign in</a>
+  	</p>
+  </form>
+</body>
+</html>
