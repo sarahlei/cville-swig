@@ -1,15 +1,22 @@
-<!DOCTYPE html>
+<?php
+  session_start();
+
+  if (isset($_GET['logout'])) {  //checks if logout button is clicked
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: index.php");
+  }
+
+?>
+
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Sarah Lei">
-
-  <title>CvilleSwig</title>
-
+	<title>CvilleSwig</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,11 +27,11 @@
   <!-- Custom styles for this template -->
   <link href="css/landing-page.min.css" rel="stylesheet">
   <link href="css/landing-page.css" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light info-color">
   <a class="navbar-brand" href="#">
     <img src="img/cville-swig-logo.png" height="60" wifth="60">  CvilleSwig</a>
@@ -56,10 +63,23 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user"></i> Profile </a>
+              <i class="fas fa-user"></i>
+              <span>
+                <?php  if (isset($_SESSION['username'])) : ?>
+                	Welcome, <strong><?php echo $_SESSION['username']; ?></strong>!
+                <?php endif ?>
+              </span>
+            </a>
+
             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-              <a class="dropdown-item waves-effect waves-light" href="./login.html">Log in</a>
+              <?php  if (isset($_SESSION['username'])){ ?>
+                <a class="dropdown-item waves-effect waves-light" href="./profile.php?username=<?php echo $_SESSION['username']; ?> ">Account</a>
+                <a class="dropdown-item waves-effect waves-light" href="index.php?logout='1'">Log Out</a>
+              <?php } else{ ?>
               <a class="dropdown-item waves-effect waves-light" href="./register.php">Sign Up</a>
+              <a class="dropdown-item waves-effect waves-light" href="./login.php">Log In</a>
+            <?php }  ?>
+
             </div>
           </li>
         </ul>
@@ -75,7 +95,7 @@
   </div>
   <hr class="my-4">
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="./login.html" role="button">Log In</a>
+    <a class="btn btn-primary btn-lg" href="./login.php" role="button">Log In</a>
   </p>
   <br>
   <p>Don't have an account?</p>
@@ -105,76 +125,88 @@
   document.getElementById("banner").innerHTML = "<p></p>Today is: <strong>" + n + "!</strong><p></p>";
 
                                                                                                      </script>
+
 <br>
+<?php
+    if(isset($_POST) && !empty($_POST['day'])){
+        $day = $_POST['day']; // you can write the variable name same as input in form element
+        printf("%s", $day);
+        echo $day;
+
+    }
+?>
 <div class="w3-container text-center font-weight-bold">
   <label for="days">Choose a Day of the Week:</label>
+    <form action="./" method="post">
+      <select name="Day" id="select_day">
+        <option hidden disabled selected value> -- select an option -- </option>
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option
+        <option value="Saturday">Saturday</option>
+      </select>
+      <button type="button" id="pick"onclick="filterDays();"> Pick Me!</button>
+    </form>
 
-  <select id="days">
-      <option value="Sunday">Sunday</option>
-      <option value="Monday">Monday</option>
-      <option value="Tuesday">Tuesday</option>
-      <option value="Wednesday">Wednesday</option>
-      <option value="Thursday">Thursday</option>
-      <option value="Friday">Friday</option
-      <option value="Saturday">Saturday</option>
-  </select>
+    <script>
+    function filterDays(){
+        var day = document.getElementById("select_day").value;
+        alert(day);
 
-</div>
+        //alert (h); // works
+        $.ajax({
+            type: "POST",
+            url: 'day.php',  // I also tried index.php directly
+            data: {day : day},
+            success:(function(data){
+                console.log(data);
+            })
+        });
+    });
+    </script>
 
-<div class="row">
+
+<?php
+
+$db = mysqli_connect('localhost', 'root', 'helloworld', 'cville-swig');
+$sql = "SELECT * FROM restaurants ";
+if ($result = $db -> query($sql)) {
+  ?>  <div class="row">
+<?php
+while ($row = $result -> fetch_row()) {
+
+  ?>
   <div class="col-sm-4">
     <div class="card" >
       <a href="./restaurant.html">
       <div class="image">
-        <img src="https://static1.squarespace.com/static/5643c029e4b081513daea7e3/t/5643c241e4b0a6089935f46b/1578506817865/?format=1500w" />
+        <img src="<?php printf("%s", $row[3]) ?>"/>
       </div>
       <div class="card-inner">
         <div class="header">
-          <h2>Boylan Heights</h2>
+          <h2><?php printf("%s", $row[0]) ?></h2>
         </div>
         <div class="content">
-          <p>Milkshake Monday: all day! $5 for any milkshake</p>
+          <p><?php printf("%s: %s", $row[1], $row[2]) ?></p>
         </div>
       </div>
     </div>
+  </div>
+<?php } ?>
+  </div>
+<?php
+//  printf ("%s (%s)\n (%s)", $row[0], $row[1], $row[2]);
 
-    </a>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="image">
-        <img src="https://scontent.fric1-2.fna.fbcdn.net/v/t1.0-9/37318004_876805135845954_2615626720962674688_n.jpg?_nc_cat=109&_nc_sid=dd9801&_nc_ohc=4XzDwHRg2MkAX_nuhkx&_nc_ht=scontent.fric1-2.fna&oh=cc58e772c42e926071277ce89c3b33b5&oe=5E806A23" />
-      </div>
-      <div class="card-inner">
-        <div class="header">
-          <h2>Asado Wing & Taco Company</h2>
-        </div>
-        <div class="content">
-          <p>Monday's:</p>
-          <ul>
-            <li>Half-off chips and queso</li>
-            <li>$3.95 margaritas</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="image">
-        <img src="https://sedonataphouse.com/wp-content/uploads/sedona-taphouse-charlottesville.png" />
-      </div>
-      <div class="card-inner">
-        <div class="header">
-          <h2>Sedona Taphouse</h2>
-        </div>
-        <div class="content">
-          <p>Steak Out for Charity every Monday! For lunch or dinner, you can get Sedona's 8oz. Black Angus Flat Iron Steak or 7oz. Salmon with garlic whipped potatoes for only $8 (normally $18.9) and we donate $1 from each plate sold to support an amazing charity.</p>
-        </div>
-      </div>
-    </div>
-  </div>
+$result -> free_result();
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($db);
+}
+?>
 </div>
+
   <!-- Footer -->
   <footer class="footer bg-light">
     <div class="container">
@@ -227,5 +259,4 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>

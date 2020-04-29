@@ -1,0 +1,269 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+
+html{
+  height: 100%;
+}
+
+body {
+  background: #007bff;
+  background: linear-gradient(teal, #33AEFF);
+  height: 100%;
+   margin: 0;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-img-left {
+  width: 45%;
+  /* Link to your background image using in the property below! */
+  background: scroll center url('https://www.c-ville.com/wp-content/uploads/2019/07/early_mountain_food_0036.jpg');
+  background-size: cover;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: grey;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+    color: grey;;
+}
+
+.form-label-group input:-ms-input-placeholder {
+    color: grey;;
+}
+
+.form-label-group input::-ms-input-placeholder {
+    color: grey;;
+}
+
+.form-label-group input::-moz-placeholder {
+    color: grey;;
+}
+
+.form-label-group input::placeholder {
+  color: grey;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: grey;
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+
+
+.form-head {
+    color: #191919;
+    font-weight: normal;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.error-message {
+    padding: 7px 10px;
+    background: #fff1f2;
+    border: #ffd5da 1px solid;
+    color: #d6001c;
+    border-radius: 4px;
+    margin: 30px 0px 10px 0px;
+}
+
+.success-message {
+    padding: 7px 10px;
+    background: #cae0c4;
+    border: #c3d0b5 1px solid;
+    color: #027506;
+    border-radius: 4px;
+    margin: 30px 0px 10px 0px;
+}
+
+.card-body {
+    background: #ffffff;
+    border-spacing: initial;
+    margin: 15px auto;
+    word-break: break-word;
+    table-layout: auto;
+    line-height: 1.8em;
+    color: #333;
+    border-radius: 4px;
+    padding: 20px 40px;
+    width: 380px;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+}
+
+.card-body .label {
+    color: #888888;
+}
+
+.demo-table .field-column {
+    padding: 15px 0px;
+}
+
+.demo-input-box {
+    padding: 13px;
+    border: #CCC 1px solid;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btnRegister {
+    padding: 13px;
+    background-color: #5d9cec;
+    color: #f5f7fa;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    border: #5791da 1px solid;
+    font-size: 1.1em;
+}
+
+.response-text {
+    max-width: 380px;
+    font-size: 1.5em;
+    text-align: center;
+    background: #fff3de;
+    padding: 42px;
+    border-radius: 3px;
+    border: #f5e9d4 1px solid;
+    font-family: arial;
+    line-height: 34px;
+    margin: 15px auto;
+}
+
+.header {
+  width: 30%;
+  margin: 50px auto 0px;
+  color: white;
+  background: #5F9EA0;
+  text-align: center;
+  border: 1px solid #B0C4DE;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+}
+form, .content {
+  width: 30%;
+  margin: 0px auto;
+  padding: 20px;
+  border: 1px solid #B0C4DE;
+  background: white;
+  border-radius: 0px 0px 10px 10px;
+}
+.input-group {
+  margin: 10px 0px 10px 0px;
+}
+.input-group label {
+  display: block;
+  text-align: left;
+  margin: 3px;
+}
+.input-group input {
+  height: 30px;
+  width: 93%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.btn {
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  background: #5F9EA0;
+  border: none;
+  border-radius: 5px;
+}
+.error {
+  width: 92%;
+  margin: 0px auto;
+  padding: 10px;
+  border: 1px solid #a94442;
+  color: #a94442;
+  background: #f2dede;
+  border-radius: 5px;
+  text-align: left;
+}
+.success {
+  color: #3c763d;
+  background: #dff0d8;
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}
